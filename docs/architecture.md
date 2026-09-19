@@ -1,24 +1,34 @@
 # Architecture
 
-This repository is in Phase 0: portfolio foundation. It prepares the project structure, data contracts, metadata, and mode architecture without building the final visual portfolio.
+This repository is in Phase 1: real portfolio data. The goal is a centralized, strongly typed content system without building final visuals, admin, analytics, authentication, or deployment.
 
 ## Portfolio Modes
 
-Professional Mode is the default public experience. It should stay bright, minimal, recruiter-friendly, and restrained.
+Professional Mode is the default public experience. Engineer Mode is an optional presentation layer. Both modes must consume the same `portfolioData` object and must not duplicate project, experience, education, language, technology, or profile content.
 
-Engineer Mode is an optional presentation layer for a darker, more interactive engineering interface. It is not a separate site and must consume the same portfolio data as Professional Mode.
+The mode foundation lives in `src/lib/portfolio-mode.ts` and `src/components/shared/portfolio-mode-provider.tsx`. The provider keeps Professional Mode as the default and safely persists future visitor choice in `localStorage`.
 
-The mode foundation lives in `src/lib/portfolio-mode.ts` and `src/components/shared/portfolio-mode-provider.tsx`. The provider safely reads and writes `localStorage` after hydration, keeping Professional Mode as the default when no saved preference exists.
+## Content Files
 
-## Shared Data
+- `src/data/profile.ts`: name, titles, professional areas, and concise bio.
+- `src/data/site-config.ts`: public contact links and metadata, deriving owner identity from profile data.
+- `src/data/education.ts`: education and future certification records.
+- `src/data/experience.ts`: technical and secondary historical experience with visibility metadata.
+- `src/data/languages.ts`: language levels without percentage scores.
+- `src/data/technologies.ts`: categorized technology list without arbitrary proficiency ranking.
+- `src/data/projects.ts`: confirmed public portfolio projects and small query helpers.
+- `src/data/project-candidates.ts`: known repositories that need manual review before public display.
+- `src/data/portfolio.ts`: aggregate public portfolio data consumed by presentation modes.
 
-Identity, links, and metadata live in `src/data/site-config.ts`. Portfolio content lives in `src/data/portfolio.ts`. Both visual modes should read from these shared sources instead of duplicating project, experience, education, technology, or social-link content.
+## Real-Data-Only Rule
 
-The core contracts are defined in `src/types/portfolio.ts`. New content should be added by updating data files once, then rendered differently by each mode as needed.
+Public portfolio content should use only confirmed information. Do not invent project descriptions, commercial release claims, CV links, live site URLs, phone numbers, or featured-project choices. Pending repositories stay in `project-candidates.ts` until reviewed.
+
+Project `status` is reserved for lifecycle state, such as `in-development` or `completed`. Project `context` is separate and optional, covering confirmed origin such as `personal`, `academic`, or `capstone`. Do not encode public ranking or featured-project order in the data until those choices are made.
 
 ## Project Media
 
-`ProjectMedia` is designed for future variants:
+`ProjectMedia` supports:
 
 - `video`
 - `gameplay`
@@ -27,20 +37,20 @@ The core contracts are defined in `src/types/portfolio.ts`. New content should b
 - `screenshot-gallery`
 - `static-image`
 
-This keeps future projects flexible without assuming a fixed number of featured items or a single media format.
+Project media arrays may remain empty until real assets are selected.
 
 ## Admin
 
-The future protected admin dashboard is expected at `/admin`, but no authentication, analytics, or admin UI exists in Phase 0. When implemented, it should live as its own route segment and avoid leaking admin-only logic into the public portfolio modes.
+The future protected admin dashboard is expected at `/admin`, but no admin route, authentication, analytics, or backend behavior exists in Phase 1.
 
 ## Organization
 
-- `src/app`: App Router route files, layout, metadata entry points, and global styles.
+- `src/app`: App Router route files, metadata entry points, and global styles.
 - `src/components/shared`: Cross-mode composition and providers.
-- `src/components/professional`: Professional Mode presentation.
-- `src/components/engineer`: Engineer Mode presentation.
+- `src/components/professional`: Professional Mode presentation placeholders.
+- `src/components/engineer`: Engineer Mode presentation placeholders.
 - `src/components/projects`: Future project-specific presentation components.
 - `src/components/ui`: Future reusable low-level UI components.
-- `src/data`: Centralized portfolio and site configuration data.
+- `src/data`: Centralized, typed portfolio content.
 - `src/lib`: Shared constants and framework-independent helpers.
 - `src/types`: TypeScript contracts for data and mode boundaries.
