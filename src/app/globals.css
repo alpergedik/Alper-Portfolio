@@ -5,7 +5,8 @@
   --foreground: #111827;
   --muted: #4b5563;
   --border: #d1d5db;
-  --font-sans-system: Arial, Helvetica, sans-serif;
+  --font-sans-system: Inter, "SF Pro Display", "Segoe UI", "Helvetica Neue", Arial,
+    sans-serif;
   --font-mono-system: "Courier New", Courier, monospace;
 }
 
@@ -26,4 +27,20 @@ body {
 
 a {
   text-underline-offset: 0.2em;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
 }
