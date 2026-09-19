@@ -19,8 +19,8 @@ export const projects = [
     media: [],
     sourceUrl: "https://github.com/alpergedik/GedikForgeStudio",
     status: "in-development",
+    context: "personal",
     caseStudyAvailable: false,
-    displayPriority: 1,
     featured: false,
   },
   {
@@ -37,8 +37,8 @@ export const projects = [
     ],
     media: [],
     status: "in-development",
+    context: "personal",
     caseStudyAvailable: false,
-    displayPriority: 2,
     featured: false,
   },
   {
@@ -55,9 +55,8 @@ export const projects = [
       { name: "WPF", category: "desktop" },
     ],
     media: [],
-    status: "personal-project",
+    context: "personal",
     caseStudyAvailable: false,
-    displayPriority: 3,
     featured: false,
   },
   {
@@ -75,9 +74,8 @@ export const projects = [
     ],
     media: [],
     sourceUrl: "https://github.com/3msd5/AA_Renkli",
-    status: "academic-project",
+    context: "capstone",
     caseStudyAvailable: false,
-    displayPriority: 4,
     featured: false,
   },
   {
@@ -95,7 +93,6 @@ export const projects = [
     media: [],
     sourceUrl: "https://github.com/AycaCetinkaya/CE316-course-project",
     caseStudyAvailable: false,
-    displayPriority: 5,
     featured: false,
   },
   {
@@ -113,7 +110,6 @@ export const projects = [
     media: [],
     sourceUrl: "https://github.com/CemBC/TankRush",
     caseStudyAvailable: false,
-    displayPriority: 6,
     featured: false,
   },
   {
@@ -131,7 +127,6 @@ export const projects = [
     media: [],
     sourceUrl: "https://github.com/elifkarsli/Desktop_Application_Project_",
     caseStudyAvailable: false,
-    displayPriority: 7,
     featured: false,
   },
   {
@@ -149,7 +144,6 @@ export const projects = [
     media: [],
     sourceUrl: "https://github.com/melihcna1/CE-216-Project",
     caseStudyAvailable: false,
-    displayPriority: 8,
     featured: false,
   },
 ] as const satisfies readonly Project[];

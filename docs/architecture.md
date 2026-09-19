@@ -24,6 +24,8 @@ The mode foundation lives in `src/lib/portfolio-mode.ts` and `src/components/sha
 
 Public portfolio content should use only confirmed information. Do not invent project descriptions, commercial release claims, CV links, live site URLs, phone numbers, or featured-project choices. Pending repositories stay in `project-candidates.ts` until reviewed.
 
+Project `status` is reserved for lifecycle state, such as `in-development` or `completed`. Project `context` is separate and optional, covering confirmed origin such as `personal`, `academic`, or `capstone`. Do not encode public ranking or featured-project order in the data until those choices are made.
+
 ## Project Media
 
 `ProjectMedia` supports:

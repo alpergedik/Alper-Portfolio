@@ -46,7 +46,6 @@ export type ProjectCategory =
   | "desktop-application"
   | "productivity"
   | "game"
-  | "academic-project"
   | "other";
 
 export type TechnologyCategory =
@@ -64,11 +63,9 @@ export type ProjectTechnology = {
   readonly category: TechnologyCategory;
 };
 
-export type ProjectStatus =
-  | "in-development"
-  | "personal-project"
-  | "academic-project"
-  | "completed";
+export type ProjectStatus = "in-development" | "completed";
+
+export type ProjectContext = "personal" | "academic" | "capstone";
 
 export type ProjectMediaVariant =
   | "video"
@@ -132,8 +129,8 @@ export type Project = {
   readonly liveUrl?: string;
   readonly year?: string;
   readonly status?: ProjectStatus;
+  readonly context?: ProjectContext;
   readonly caseStudyAvailable: boolean;
-  readonly displayPriority?: number;
   readonly featured: boolean;
 };
 
