@@ -10,6 +10,7 @@ export function ProfessionalLanding({
   portfolioData,
 }: ProfessionalLandingProps) {
   const { owner, socialLinks } = siteConfig;
+  const { profile } = portfolioData;
 
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -25,9 +26,7 @@ export function ProfessionalLanding({
             {owner.primaryTitle} / {owner.secondaryTitle}
           </p>
           <p className="mt-6 max-w-2xl text-base leading-7 text-muted">
-            A clean, data-driven portfolio foundation is in place. Professional
-            Mode is the default public experience; Engineer Mode will use the
-            same content source with a different presentation layer.
+            {profile.bio}
           </p>
         </div>
 
@@ -50,7 +49,7 @@ export function ProfessionalLanding({
           ))}
         </nav>
 
-        <dl className="mt-16 grid gap-4 border-t border-border pt-8 text-sm text-muted sm:grid-cols-4">
+        <dl className="mt-16 grid gap-4 border-t border-border pt-8 text-sm text-muted sm:grid-cols-5">
           <div>
             <dt className="font-medium text-foreground">Projects</dt>
             <dd className="mt-1">{portfolioData.projects.length}</dd>
@@ -66,6 +65,10 @@ export function ProfessionalLanding({
           <div>
             <dt className="font-medium text-foreground">Technologies</dt>
             <dd className="mt-1">{portfolioData.technologies.length}</dd>
+          </div>
+          <div>
+            <dt className="font-medium text-foreground">Languages</dt>
+            <dd className="mt-1">{portfolioData.languages.length}</dd>
           </div>
         </dl>
       </section>

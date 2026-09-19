@@ -1,10 +1,11 @@
+import { profile } from "@/data/profile";
 import type { SiteConfig } from "@/types/portfolio";
 
 export const siteConfig = {
   owner: {
-    name: "Alper Gedik",
-    primaryTitle: "Computer Engineer",
-    secondaryTitle: "Software Developer",
+    name: profile.name,
+    primaryTitle: profile.primaryTitle,
+    secondaryTitle: profile.secondaryTitle,
     email: "alpergedik46@gmail.com",
   },
   socialLinks: [

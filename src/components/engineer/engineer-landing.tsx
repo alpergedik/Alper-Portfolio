@@ -22,6 +22,8 @@ export function EngineerLanding({
         </p>
         <p className="mt-8 text-sm text-[#9fb7c0]">
           data.projects={portfolioData.projects.length}
+          <br />
+          data.languages={portfolioData.languages.length}
         </p>
       </section>
     </main>
