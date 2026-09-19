@@ -1,10 +1,10 @@
 # Architecture
 
-This repository is in Phase 1: real portfolio data. The goal is a centralized, strongly typed content system without building final visuals, admin, analytics, authentication, or deployment.
+This repository is in Phase 2: Professional Mode. The goal is a final-quality default public portfolio experience using the centralized real data system, without building Engineer Mode, admin, analytics, authentication, or deployment.
 
 ## Portfolio Modes
 
-Professional Mode is the default public experience. Engineer Mode is an optional presentation layer. Both modes must consume the same `portfolioData` object and must not duplicate project, experience, education, language, technology, or profile content.
+Professional Mode is the default public experience and owns the bright editorial presentation. Engineer Mode is an optional presentation layer that currently remains a placeholder. Both modes must consume the same `portfolioData` object and must not duplicate project, experience, education, language, technology, or profile content.
 
 The mode foundation lives in `src/lib/portfolio-mode.ts` and `src/components/shared/portfolio-mode-provider.tsx`. The provider keeps Professional Mode as the default and safely persists future visitor choice in `localStorage`.
 
@@ -47,7 +47,7 @@ The future protected admin dashboard is expected at `/admin`, but no admin route
 
 - `src/app`: App Router route files, metadata entry points, and global styles.
 - `src/components/shared`: Cross-mode composition and providers.
-- `src/components/professional`: Professional Mode presentation placeholders.
+- `src/components/professional`: Professional Mode visual sections and cards.
 - `src/components/engineer`: Engineer Mode presentation placeholders.
 - `src/components/projects`: Future project-specific presentation components.
 - `src/components/ui`: Future reusable low-level UI components.
