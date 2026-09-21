@@ -24,9 +24,9 @@ export function ProfessionalProjectCard({
   ].filter(Boolean);
 
   return (
-    <article className="group overflow-hidden rounded-[1.5rem] border border-[#1113181a] bg-white shadow-[0_16px_52px_rgba(17,19,24,0.04)] transition-transform duration-200 hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+    <article className="group overflow-hidden rounded-[1.5rem] border border-[#1113181a] bg-white shadow-[0_14px_44px_rgba(17,19,24,0.04)] transition-transform duration-200 hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
       <ProjectMediaPlaceholder project={project} />
-      <div className="p-5 sm:p-5">
+      <div className="p-4 sm:p-5">
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[#3b6ef5]">
             {project.categoryLabel}
@@ -47,7 +47,7 @@ export function ProfessionalProjectCard({
           {project.summary}
         </p>
 
-        <ul className="mt-4 flex flex-wrap gap-2" aria-label="Technologies">
+        <ul className="mt-3.5 flex flex-wrap gap-2" aria-label="Technologies">
           {project.technologies.map((technology) => (
             <li
               className="rounded-full border border-[#1113181a] px-2.5 py-1 text-xs font-medium text-[#2f333a]"
@@ -59,7 +59,7 @@ export function ProfessionalProjectCard({
         </ul>
 
         {project.sourceUrl || project.liveUrl || project.caseStudyAvailable ? (
-          <div className="mt-5 flex flex-wrap gap-3">
+          <div className="mt-4 flex flex-wrap gap-3">
             {project.sourceUrl ? (
               <ProjectAction href={project.sourceUrl} label="Source" />
             ) : null}
@@ -103,20 +103,37 @@ function ProjectMediaPlaceholder({ project }: { readonly project: Project }) {
   return (
     <div
       aria-label={`${project.title} project preview surface`}
-      className={`relative h-44 overflow-hidden border-b border-[#1113181a] ${tone.background} sm:h-48`}
+      className={`relative h-40 overflow-hidden border-b border-[#1113181a] ${tone.background} sm:h-44`}
       role="img"
     >
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(17,19,24,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(17,19,24,0.055)_1px,transparent_1px)] bg-[size:28px_28px]" />
-      <div className="absolute inset-5 rounded-[1.25rem] border border-[#1113181a] bg-white/65 shadow-[inset_0_1px_0_rgba(255,255,255,0.55)]" />
-      <div className={`absolute left-8 top-8 h-14 w-14 rounded-2xl ${tone.accent}`} />
-      <div className="absolute left-11 top-11 text-sm font-semibold tracking-[-0.02em] text-[#111318]">
-        {initials}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(17,19,24,0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(17,19,24,0.045)_1px,transparent_1px)] bg-[size:30px_30px]" />
+      <div className="absolute inset-4 rounded-[1.35rem] border border-[#11131814] bg-white/60 shadow-[inset_0_1px_0_rgba(255,255,255,0.65)]" />
+      <div
+        aria-hidden="true"
+        className={`absolute left-8 top-7 h-16 w-16 rounded-[1.25rem] ${tone.accent}`}
+      />
+      <div className="absolute left-8 top-7 flex h-16 w-16 items-center justify-center rounded-[1.25rem] border border-[#11131812] bg-white/75 text-base font-semibold tracking-[-0.03em] text-[#111318] shadow-[0_14px_34px_rgba(17,19,24,0.055)]">
+        <span>{initials}</span>
       </div>
-      <div className="absolute bottom-8 left-8 max-w-[calc(100%-8rem)] truncate rounded-full border border-[#1113181a] bg-white/80 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-[#666b73]">
+      <div className="absolute bottom-7 left-8 max-w-[calc(100%-4rem)] rounded-full border border-[#11131814] bg-white/80 px-3 py-1 text-[0.68rem] font-semibold uppercase leading-4 tracking-[0.14em] text-[#666b73] sm:max-w-[calc(100%-8rem)]">
         {project.categoryLabel}
       </div>
-      <div className="absolute right-7 top-8 h-20 w-28 rounded-[1.25rem] border border-[#1113181a] bg-white/75" />
-      <div className={`absolute bottom-8 right-8 h-10 w-20 rounded-2xl ${tone.block}`} />
+      <div
+        aria-hidden="true"
+        className="absolute right-8 top-8 hidden h-16 w-24 rounded-[1.15rem] border border-[#11131812] bg-white/55 sm:block"
+      />
+      <div
+        aria-hidden="true"
+        className={`absolute bottom-8 right-8 hidden h-9 w-24 rounded-full sm:block ${tone.block}`}
+      />
+      <div
+        aria-hidden="true"
+        className={`absolute bottom-14 right-16 hidden h-px w-28 rotate-[-18deg] sm:block ${tone.line}`}
+      />
+      <div
+        aria-hidden="true"
+        className="absolute right-8 top-8 hidden h-3 w-3 rounded-full bg-white/80 sm:block"
+      />
     </div>
   );
 }
@@ -125,30 +142,34 @@ function getPreviewTone(category: Project["category"]) {
   if (category === "mobile-game") {
     return {
       background: "bg-[#eef2f6]",
-      accent: "bg-[#3b6ef5]/12",
-      block: "bg-[#3b6ef5]/10",
+      accent: "bg-[rgba(59,110,245,0.12)]",
+      block: "bg-[rgba(59,110,245,0.1)]",
+      line: "bg-[rgba(59,110,245,0.2)]",
     };
   }
 
   if (category === "game") {
     return {
       background: "bg-[#f1f2ee]",
-      accent: "bg-[#111318]/10",
-      block: "bg-[#3b6ef5]/12",
+      accent: "bg-[rgba(17,19,24,0.1)]",
+      block: "bg-[rgba(59,110,245,0.12)]",
+      line: "bg-[rgba(17,19,24,0.16)]",
     };
   }
 
   if (category === "developer-tool") {
     return {
       background: "bg-[#eef1f0]",
-      accent: "bg-[#3b6ef5]/15",
-      block: "bg-[#111318]/10",
+      accent: "bg-[rgba(59,110,245,0.15)]",
+      block: "bg-[rgba(17,19,24,0.1)]",
+      line: "bg-[rgba(59,110,245,0.24)]",
     };
   }
 
   return {
     background: "bg-[#f0f1ee]",
-    accent: "bg-[#111318]/10",
-    block: "bg-[#3b6ef5]/10",
+    accent: "bg-[rgba(17,19,24,0.1)]",
+    block: "bg-[rgba(59,110,245,0.1)]",
+    line: "bg-[rgba(17,19,24,0.14)]",
   };
 }

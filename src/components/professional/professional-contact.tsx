@@ -6,9 +6,9 @@ type ProfessionalContactProps = {
 
 export function ProfessionalContact({ siteConfig }: ProfessionalContactProps) {
   return (
-    <section className="scroll-mt-24 py-14 sm:py-20" id="contact">
+    <section className="scroll-mt-24 py-10 sm:py-14" id="contact">
       <div className="mx-auto w-full max-w-[1220px] px-5 sm:px-8">
-        <div className="rounded-[2rem] border border-[#1113181a] bg-[#111318] p-6 text-white shadow-[0_24px_80px_rgba(17,19,24,0.12)] sm:p-9 lg:p-11">
+        <div className="rounded-[2rem] border border-[#1113181a] bg-[#111318] p-6 text-white shadow-[0_24px_80px_rgba(17,19,24,0.12)] sm:p-8 lg:p-10">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#8fabff]">
             Contact
           </p>
