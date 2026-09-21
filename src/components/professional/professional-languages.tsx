@@ -8,14 +8,14 @@ type ProfessionalLanguagesProps = {
 export function ProfessionalLanguages({ languages }: ProfessionalLanguagesProps) {
   return (
     <ProfessionalSection
-      className="py-10 sm:py-14"
+      className="py-8 sm:py-10"
       eyebrow="Languages"
       title="Language Skills"
     >
       <div className="grid gap-3 sm:grid-cols-3">
         {languages.map((item) => (
           <div
-            className="rounded-2xl border border-[#1113181a] bg-white p-5"
+            className="rounded-2xl border border-[#1113181a] bg-white px-4 py-4"
             key={item.language}
           >
             <p className="text-lg font-semibold text-[#111318]">

@@ -22,52 +22,68 @@ export function ProfessionalExperience({
     >
       <div className="grid gap-6 lg:grid-cols-[1.18fr_0.82fr] lg:items-start">
         <div className="space-y-4">
-          {sortedExperience.map((item) => (
-            <article
-              className={`rounded-[1.5rem] border bg-white p-5 shadow-[0_18px_60px_rgba(17,19,24,0.04)] sm:p-6 ${
-                item.visibility === "secondary"
-                  ? "border-[#11131812] opacity-80"
-                  : "border-[#1113181a]"
-              }`}
-              key={item.id}
-            >
-              <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#3b6ef5]">
-                    {item.visibility === "primary"
-                      ? "Technical experience"
-                      : "Additional experience"}
-                  </p>
-                  <h3 className="mt-3 text-xl font-semibold text-[#111318]">
-                    {item.role}
-                  </h3>
-                  <p className="mt-1 text-sm font-medium text-[#2f333a]">
-                    {item.organization}
-                  </p>
+          {sortedExperience.map((item) => {
+            const isSecondary = item.visibility === "secondary";
+
+            return (
+              <article
+                className={`rounded-[1.5rem] border bg-white shadow-[0_18px_60px_rgba(17,19,24,0.04)] ${
+                  isSecondary
+                    ? "border-[#11131812] p-4 opacity-80 shadow-[0_10px_34px_rgba(17,19,24,0.025)] sm:p-5"
+                    : "border-[#1113181a] p-5 sm:p-6"
+                }`}
+                key={item.id}
+              >
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#3b6ef5]">
+                      {item.visibility === "primary"
+                        ? "Technical experience"
+                        : "Additional experience"}
+                    </p>
+                    <h3
+                      className={`mt-3 font-semibold text-[#111318] ${
+                        isSecondary ? "text-lg" : "text-xl"
+                      }`}
+                    >
+                      {item.role}
+                    </h3>
+                    <p className="mt-1 text-sm font-medium text-[#2f333a]">
+                      {item.organization}
+                    </p>
+                  </div>
+                  <div className="text-sm text-[#666b73] sm:text-right">
+                    <p>{item.dateLabel}</p>
+                    {item.location ? <p>{item.location}</p> : null}
+                  </div>
                 </div>
-                <div className="text-sm text-[#666b73] sm:text-right">
-                  <p>{item.dateLabel}</p>
-                  {item.location ? <p>{item.location}</p> : null}
-                </div>
-              </div>
-              <p className="mt-5 text-sm leading-7 text-[#666b73]">
-                {item.summary}
-              </p>
-              {item.highlights.length > 0 ? (
-                <ul className="mt-5 space-y-2 text-sm leading-6 text-[#666b73]">
-                  {item.highlights.map((highlight) => (
-                    <li className="flex gap-3" key={highlight}>
-                      <span
-                        aria-hidden="true"
-                        className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#3b6ef5]"
-                      />
-                      <span>{highlight}</span>
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
-            </article>
-          ))}
+                <p
+                  className={`text-sm text-[#666b73] ${
+                    isSecondary ? "mt-4 leading-6" : "mt-5 leading-7"
+                  }`}
+                >
+                  {item.summary}
+                </p>
+                {item.highlights.length > 0 ? (
+                  <ul
+                    className={`space-y-2 text-sm leading-6 text-[#666b73] ${
+                      isSecondary ? "mt-4" : "mt-5"
+                    }`}
+                  >
+                    {item.highlights.map((highlight) => (
+                      <li className="flex gap-3" key={highlight}>
+                        <span
+                          aria-hidden="true"
+                          className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#3b6ef5]"
+                        />
+                        <span>{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+              </article>
+            );
+          })}
         </div>
 
         <div className="space-y-4">
@@ -76,7 +92,7 @@ export function ProfessionalExperience({
           </p>
           {education.map((item) => (
             <article
-              className="rounded-[1.5rem] border border-[#1113181a] bg-white p-5 shadow-[0_16px_50px_rgba(17,19,24,0.035)] sm:p-6"
+              className="rounded-[1.5rem] border border-[#1113181a] bg-white p-5 shadow-[0_12px_40px_rgba(17,19,24,0.03)]"
               key={item.id}
             >
               <h3 className="text-lg font-semibold text-[#111318]">

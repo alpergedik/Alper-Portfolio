@@ -18,7 +18,7 @@ export function ProfessionalSection({
   className = "",
 }: ProfessionalSectionProps) {
   return (
-    <section className={`scroll-mt-24 py-14 sm:py-20 ${className}`} id={id}>
+    <section className={`scroll-mt-24 py-12 sm:py-16 ${className}`} id={id}>
       <div className="mx-auto w-full max-w-[1220px] px-5 sm:px-8">
         <div className="max-w-3xl">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#3b6ef5]">
@@ -28,12 +28,12 @@ export function ProfessionalSection({
             {title}
           </h2>
           {copy ? (
-            <p className="mt-5 text-base leading-8 text-[#666b73] sm:text-lg">
+            <p className="mt-4 text-base leading-8 text-[#666b73] sm:text-lg">
               {copy}
             </p>
           ) : null}
         </div>
-        <div className="mt-9 sm:mt-12">{children}</div>
+        <div className="mt-8 sm:mt-10">{children}</div>
       </div>
     </section>
   );

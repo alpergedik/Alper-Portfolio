@@ -19,7 +19,7 @@ export function ProfessionalHero({
 
   return (
     <section id="top" className="scroll-mt-24">
-      <div className="mx-auto grid w-full max-w-[1220px] items-center gap-10 px-5 py-14 sm:px-8 sm:py-16 lg:min-h-[calc(100vh-5rem)] lg:grid-cols-[1.08fr_0.92fr] lg:py-16">
+      <div className="mx-auto grid w-full max-w-[1220px] items-center gap-10 px-5 py-10 sm:px-8 sm:py-12 lg:min-h-[640px] lg:grid-cols-[1.08fr_0.92fr] lg:py-8">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#3b6ef5]">
             {profile.primaryTitle} / {profile.secondaryTitle}
@@ -51,9 +51,17 @@ export function ProfessionalHero({
 
         <aside
           aria-label="Professional summary"
-          className="rounded-[2rem] border border-[#1113181a] bg-white p-5 shadow-[0_24px_80px_rgba(17,19,24,0.08)] sm:p-6"
+          className="rounded-[2rem] border border-[#1113181a] bg-white p-4 shadow-[0_24px_80px_rgba(17,19,24,0.08)] sm:p-5"
         >
-          <div className="rounded-[1.5rem] bg-[#f0f1ee] p-5 sm:p-6">
+          <div className="relative overflow-hidden rounded-[1.5rem] bg-[#f0f1ee] p-5 sm:p-6">
+            <div
+              aria-hidden="true"
+              className="absolute right-0 top-0 h-28 w-28 border-b border-l border-[#11131812]"
+            />
+            <div
+              aria-hidden="true"
+              className="absolute -right-6 top-16 h-px w-36 rotate-[-28deg] bg-[#3b6ef5]/20"
+            />
             <div className="flex items-center justify-between gap-4">
               <div>
                 <p className="text-sm font-semibold text-[#111318]">
@@ -63,16 +71,28 @@ export function ProfessionalHero({
                   {profile.primaryTitle}
                 </p>
               </div>
-              <div className="h-12 w-12 rounded-2xl border border-[#1113181a] bg-white" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-[#1113181a] bg-white text-sm font-semibold tracking-[-0.02em] text-[#111318] shadow-[0_10px_30px_rgba(17,19,24,0.06)]">
+                AG.
+              </div>
             </div>
 
-            <div className="mt-7 grid gap-3">
+            <div className="mt-6 border-t border-[#11131812] pt-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#3b6ef5]">
+                Focus Areas
+              </p>
+            </div>
+
+            <div className="mt-4 grid gap-2.5">
               {profile.professionalAreas.map((area) => (
                 <div
-                  className="rounded-2xl border border-[#1113181a] bg-white px-4 py-3.5 text-sm font-medium text-[#2f333a]"
+                  className="flex items-center gap-3 rounded-2xl border border-[#11131814] bg-white/90 px-4 py-3 text-sm font-medium text-[#2f333a] shadow-[0_10px_24px_rgba(17,19,24,0.035)]"
                   key={area}
                 >
-                  {area}
+                  <span
+                    aria-hidden="true"
+                    className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#3b6ef5]"
+                  />
+                  <span>{area}</span>
                 </div>
               ))}
             </div>
