@@ -1,6 +1,6 @@
 # Architecture
 
-This repository is in Phase 3: Engineer Mode. The goal is to keep Professional Mode as the approved default public portfolio experience while adding the final-quality Engineer Mode presentation from the same centralized real data system, without building admin, analytics, authentication, or deployment.
+This repository is in Phase 4: Project Showcase. The goal is to keep Professional Mode as the approved default public portfolio experience and Engineer Mode as the approved optional presentation while adding a shared featured-project hierarchy and reusable media renderer, without building admin, analytics, authentication, deployment, project detail routes, or fake project media.
 
 ## Portfolio Modes
 
@@ -22,9 +22,9 @@ The mode foundation lives in `src/lib/portfolio-mode.ts` and `src/components/sha
 
 ## Real-Data-Only Rule
 
-Public portfolio content should use only confirmed information. Do not invent project descriptions, commercial release claims, CV links, live site URLs, phone numbers, or featured-project choices. Pending repositories stay in `project-candidates.ts` until reviewed.
+Public portfolio content should use only confirmed information. Do not invent project descriptions, commercial release claims, CV links, live site URLs, phone numbers, case studies, or media. Pending repositories stay in `project-candidates.ts` until reviewed.
 
-Project `status` is reserved for lifecycle state, such as `in-development` or `completed`. Project `context` is separate and optional, covering confirmed origin such as `personal`, `academic`, or `capstone`. Do not encode public ranking or featured-project order in the data until those choices are made.
+Project `status` is reserved for lifecycle state, such as `in-development` or `completed`. Project `context` is separate and optional, covering confirmed origin such as `personal`, `academic`, or `capstone`. Project `visibility` controls public rendering, `featured` controls showcase inclusion, and `featuredOrder` is used only for explicitly featured projects.
 
 ## Project Media
 
@@ -39,11 +39,11 @@ Project `status` is reserved for lifecycle state, such as `in-development` or `c
 
 Project media arrays may remain empty until real assets are selected.
 
-Engineer Mode includes a dedicated project media boundary so future real media variants can be added without changing confirmed project content.
+The shared renderer in `src/components/projects/project-media.tsx` handles real media variants while each mode supplies its own abstract fallback when media arrays are empty. See `docs/project-showcase.md` for the featured order and future media plan.
 
 ## Admin
 
-The future protected admin dashboard is expected at `/admin`, but no admin route, authentication, analytics, or backend behavior exists in Phase 3.
+The future protected admin dashboard is expected at `/admin`, but no admin route, authentication, analytics, or backend behavior exists in Phase 4.
 
 ## Organization
 
@@ -51,7 +51,7 @@ The future protected admin dashboard is expected at `/admin`, but no admin route
 - `src/components/shared`: Cross-mode composition and providers.
 - `src/components/professional`: Professional Mode visual sections and cards.
 - `src/components/engineer`: Engineer Mode dark technical presentation components.
-- `src/components/projects`: Future project-specific presentation components.
+- `src/components/projects`: Shared project media rendering and project-specific presentation helpers.
 - `src/components/ui`: Future reusable low-level UI components.
 - `src/data`: Centralized, typed portfolio content.
 - `src/lib`: Shared constants and framework-independent helpers.

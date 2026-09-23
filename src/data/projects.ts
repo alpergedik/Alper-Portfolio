@@ -20,8 +20,10 @@ export const projects = [
     sourceUrl: "https://github.com/alpergedik/GedikForgeStudio",
     status: "in-development",
     context: "personal",
+    visibility: "public",
     caseStudyAvailable: false,
-    featured: false,
+    featured: true,
+    featuredOrder: 1,
   },
   {
     id: "world-cup-draft-simulator",
@@ -38,8 +40,10 @@ export const projects = [
     media: [],
     status: "in-development",
     context: "personal",
+    visibility: "public",
     caseStudyAvailable: false,
-    featured: false,
+    featured: true,
+    featuredOrder: 2,
   },
   {
     id: "projectpilot",
@@ -56,6 +60,7 @@ export const projects = [
     ],
     media: [],
     context: "personal",
+    visibility: "hidden",
     caseStudyAvailable: false,
     featured: false,
   },
@@ -75,8 +80,34 @@ export const projects = [
     media: [],
     sourceUrl: "https://github.com/3msd5/AA_Renkli",
     context: "capstone",
+    visibility: "public",
     caseStudyAvailable: false,
-    featured: false,
+    featured: true,
+    featuredOrder: 3,
+  },
+  {
+    id: "bloom-focus",
+    slug: "bloom-focus",
+    title: "Bloom Focus",
+    summary:
+      "A nature-inspired Flutter productivity application that combines focus sessions with plant growth.",
+    category: "mobile-application",
+    categoryLabel: "Mobile Application / Productivity",
+    technologies: [
+      { name: "Flutter", category: "mobile" },
+      { name: "Dart", category: "language" },
+      { name: "Riverpod", category: "mobile" },
+      { name: "go_router", category: "mobile" },
+      { name: "Hive", category: "database" },
+    ],
+    media: [],
+    sourceUrl: "https://github.com/alpergedik/bloom-focus",
+    status: "in-development",
+    context: "personal",
+    visibility: "public",
+    caseStudyAvailable: false,
+    featured: true,
+    featuredOrder: 4,
   },
   {
     id: "integrated-assignment-environment",
@@ -92,6 +123,7 @@ export const projects = [
     ],
     media: [],
     sourceUrl: "https://github.com/AycaCetinkaya/CE316-course-project",
+    visibility: "public",
     caseStudyAvailable: false,
     featured: false,
   },
@@ -109,6 +141,7 @@ export const projects = [
     ],
     media: [],
     sourceUrl: "https://github.com/CemBC/TankRush",
+    visibility: "public",
     caseStudyAvailable: false,
     featured: false,
   },
@@ -126,6 +159,7 @@ export const projects = [
     ],
     media: [],
     sourceUrl: "https://github.com/elifkarsli/Desktop_Application_Project_",
+    visibility: "public",
     caseStudyAvailable: false,
     featured: false,
   },
@@ -143,15 +177,35 @@ export const projects = [
     ],
     media: [],
     sourceUrl: "https://github.com/melihcna1/CE-216-Project",
+    visibility: "public",
     caseStudyAvailable: false,
     featured: false,
   },
 ] as const satisfies readonly Project[];
 
 export function getProjectBySlug(slug: string) {
-  return projects.find((project) => project.slug === slug);
+  return getPublicProjects().find((project) => project.slug === slug);
 }
 
 export function getProjectsByCategory(category: ProjectCategory) {
-  return projects.filter((project) => project.category === category);
+  return getPublicProjects().filter((project) => project.category === category);
+}
+
+export function getPublicProjects(projectList: readonly Project[] = projects) {
+  return projectList.filter((project) => project.visibility === "public");
+}
+
+export function getFeaturedProjects(projectList: readonly Project[] = projects) {
+  return getPublicProjects(projectList)
+    .filter((project) => project.featured)
+    .sort((first, second) => {
+      const firstOrder = first.featuredOrder ?? Number.MAX_SAFE_INTEGER;
+      const secondOrder = second.featuredOrder ?? Number.MAX_SAFE_INTEGER;
+
+      return firstOrder - secondOrder;
+    });
+}
+
+export function getMoreProjects(projectList: readonly Project[] = projects) {
+  return getPublicProjects(projectList).filter((project) => !project.featured);
 }

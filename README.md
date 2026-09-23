@@ -4,7 +4,7 @@ Personal portfolio website for Alper Gedik, a computer engineer and software dev
 
 ## Current Phase
 
-Phase 3 - Engineer Mode. Professional Mode remains the default public experience, Engineer Mode now has its final public presentation, and the protected admin dashboard is intentionally not implemented yet.
+Phase 4 — Project Showcase. Professional Mode remains the default public experience, Engineer Mode remains optional, and both modes now share a featured project showcase with secondary More Projects.
 
 ## Development
 
@@ -21,4 +21,4 @@ The site uses Next.js App Router with TypeScript and Tailwind CSS. Public portfo
 
 Professional Mode is the default public experience and has the approved bright editorial implementation. Engineer Mode is a separate dark technical presentation layer, with mode persistence isolated in shared mode utilities and provider code.
 
-See `docs/architecture.md` for the Phase 3 structure and expansion notes.
+See `docs/architecture.md` for the Phase 4 structure and expansion notes. See `docs/project-showcase.md` for featured project and media guidance.

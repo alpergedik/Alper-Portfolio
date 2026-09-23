@@ -42,6 +42,7 @@ export type SiteConfig = {
 export type ProjectCategory =
   | "developer-tool"
   | "software-platform"
+  | "mobile-application"
   | "mobile-game"
   | "desktop-application"
   | "productivity"
@@ -67,6 +68,8 @@ export type ProjectStatus = "in-development" | "completed";
 
 export type ProjectContext = "personal" | "academic" | "capstone";
 
+export type ProjectVisibility = "public" | "hidden";
+
 export type ProjectMediaVariant =
   | "video"
   | "gameplay"
@@ -84,11 +87,16 @@ export type ProjectVideoMedia = ProjectMediaBase & {
   readonly src: string;
   readonly alt?: string;
   readonly poster?: string;
+  readonly autoPlay?: boolean;
+  readonly controls?: boolean;
+  readonly loop?: boolean;
+  readonly muted?: boolean;
 };
 
 export type ProjectInteractiveDemoMedia = ProjectMediaBase & {
   readonly variant: "interactive-demo";
   readonly href: string;
+  readonly embedPath?: `/${string}`;
   readonly fallbackImage?: string;
 };
 
@@ -130,8 +138,10 @@ export type Project = {
   readonly year?: string;
   readonly status?: ProjectStatus;
   readonly context?: ProjectContext;
+  readonly visibility: ProjectVisibility;
   readonly caseStudyAvailable: boolean;
   readonly featured: boolean;
+  readonly featuredOrder?: number;
 };
 
 export type ExperienceVisibility = "primary" | "secondary";
