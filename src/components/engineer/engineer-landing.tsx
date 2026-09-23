@@ -1,6 +1,12 @@
-"use client";
-
-import { usePortfolioMode } from "@/components/shared/portfolio-mode-provider";
+import { EngineerAbout } from "@/components/engineer/engineer-about";
+import { EngineerContact } from "@/components/engineer/engineer-contact";
+import { EngineerExperience } from "@/components/engineer/engineer-experience";
+import { EngineerFooter } from "@/components/engineer/engineer-footer";
+import { EngineerHeader } from "@/components/engineer/engineer-header";
+import { EngineerHero } from "@/components/engineer/engineer-hero";
+import { EngineerLanguages } from "@/components/engineer/engineer-languages";
+import { EngineerProjects } from "@/components/engineer/engineer-projects";
+import { EngineerStack } from "@/components/engineer/engineer-stack";
 import type { PortfolioData, SiteConfig } from "@/types/portfolio";
 
 type EngineerLandingProps = {
@@ -12,32 +18,35 @@ export function EngineerLanding({
   siteConfig,
   portfolioData,
 }: EngineerLandingProps) {
-  const { setMode } = usePortfolioMode();
-
   return (
-    <main className="min-h-screen bg-[#05070b] text-[#e6f7ff]">
-      <section className="mx-auto flex min-h-screen w-full max-w-5xl flex-col justify-center px-6 py-20 font-mono sm:px-10">
-        <button
-          className="mb-10 w-fit rounded-md border border-[#60e6ff]/30 px-4 py-2 text-sm text-[#e6f7ff] transition-colors hover:border-[#60e6ff] hover:text-[#60e6ff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#60e6ff] focus-visible:ring-offset-2 focus-visible:ring-offset-[#05070b]"
-          onClick={() => setMode("professional")}
-          type="button"
-        >
-          Professional Mode
-        </button>
-        <p className="text-sm text-[#60e6ff]">mode: engineer</p>
-        <h1 className="mt-5 text-4xl font-semibold tracking-normal sm:text-6xl">
-          {siteConfig.owner.name}
-        </h1>
-        <p className="mt-5 max-w-2xl text-base leading-7 text-[#9fb7c0]">
-          Engineer Mode placeholder. This presentation layer is intentionally
-          separate from the shared portfolio data source.
-        </p>
-        <p className="mt-8 text-sm text-[#9fb7c0]">
-          data.projects={portfolioData.projects.length}
-          <br />
-          data.languages={portfolioData.languages.length}
-        </p>
-      </section>
-    </main>
+    <div className="min-h-screen bg-[#05080b] text-[#f1f7fa]">
+      <EngineerHeader siteConfig={siteConfig} />
+      <main className="relative overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(35,213,245,0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(35,213,245,0.045)_1px,transparent_1px)] bg-[size:44px_44px]"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_76%_8%,rgba(35,213,245,0.13),transparent_30%),radial-gradient(circle_at_12%_18%,rgba(54,215,243,0.08),transparent_28%)]"
+        />
+        <div className="relative">
+          <EngineerHero
+            portfolioData={portfolioData}
+            siteConfig={siteConfig}
+          />
+          <EngineerAbout profile={portfolioData.profile} />
+          <EngineerProjects projects={portfolioData.projects} />
+          <EngineerExperience
+            education={portfolioData.education}
+            experience={portfolioData.experience}
+          />
+          <EngineerStack technologies={portfolioData.technologies} />
+          <EngineerLanguages languages={portfolioData.languages} />
+          <EngineerContact siteConfig={siteConfig} />
+        </div>
+      </main>
+      <EngineerFooter siteConfig={siteConfig} />
+    </div>
   );
 }
